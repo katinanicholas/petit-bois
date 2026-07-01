@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petit Bois Neighborhood Newsletter — July 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal-deep:   #1A4744;
+    --teal-mid:    #2D6B67;
+    --teal-light:  #E1F5EE;
+    --teal-border: #5DCAA5;
+    --gold:        #C4964A;
+    --gold-light:  #FAEEDA;
+    --sand:        #F5F0E8;
+    --white:       #FDFAF5;
+    --dark:        #1E1E1A;
+    --mid:         #4A4840;
+    --stone:       #8A8578;
+    --border:      #E8E3DA;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8E4DC;
+    color: var(--mid);
+    margin: 0;
+    padding: 40px 20px;
+  }
+
+  .email-wrapper {
+    max-width: 620px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  /* ── HEADER ──────────────────────── */
+  .header {
+    background: var(--teal-deep);
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(29,158,117,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+
+  .issue-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(253,250,245,0.4);
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 12px;
+    color: rgba(253,250,245,0.55);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gold-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTIONS ─────────────────────── */
+  .section {
+    padding: 36px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--teal-deep);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-title em { font-style: italic; }
+
+  .divider {
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .body-text {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  /* ── STATS GRID ──────────────────── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: var(--white);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--teal-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-value em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .insight-box {
+    background: var(--teal-deep);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-top: 16px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .insight-box p {
+    font-size: 13px;
+    color: rgba(253,250,245,0.8);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .insight-box strong { color: var(--gold); }
+
+  /* ── COMMUNITY HIGHLIGHTS ─────────── */
+  .highlight-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .highlight-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    width: 36px;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .highlight-text h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--teal-deep);
+    margin-bottom: 4px;
+  }
+
+  .highlight-text p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  /* ── PERSONAL NOTE ────────────────── */
+  .note-section {
+    background: var(--sand);
+    padding: 36px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .note-card {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 28px;
+    border-top: 2px solid var(--teal-border);
+  }
+
+  .note-card p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  .note-card p:last-child { margin-bottom: 0; }
+
+  .note-signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--teal-deep);
+    margin-top: 20px;
+    display: block;
+  }
+
+  .note-title {
+    font-size: 11px;
+    color: var(--stone);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── CTA ──────────────────────────── */
+  .cta-section {
+    background: var(--teal-deep);
+    padding: 32px 40px;
+    text-align: center;
+  }
+
+  .cta-section p {
+    font-size: 13px;
+    color: rgba(253,250,245,0.65);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+
+  /* ── FOOTER ───────────────────────── */
+  .footer {
+    background: var(--dark);
+    padding: 24px 40px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .footer p {
+    font-size: 10px;
+    color: rgba(253,250,245,0.3);
+    line-height: 1.7;
+  }
+
+  .footer a {
+    color: rgba(93,202,165,0.6);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+  <!-- VIEW IN BROWSER -->
+  <div style="text-align:center;padding:12px 40px;background:#E8E4DC;font-family:'DM Sans',sans-serif;font-size:12px;color:#8A8578;">
+    Having trouble viewing this email? <a href="https://katinanicholas.github.io/petit-bois/petit-bois-newsletter-july-2026.html" style="color:#1A4744;text-decoration:underline;">View it in your browser.</a>
+  </div>
+
+<div class="email-wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">Keys. Clarity. Katina.</div>
+      <div class="issue-label">July 2026 · Vol. 1</div>
+    </div>
+    <h1 class="header-title">Petit Bois<br><em>Neighborhood Newsletter</em></h1>
+    <p class="header-sub">Your monthly source for local market data, community highlights, and neighborhood news · Biloxi, MS 39531</p>
+    <div class="gold-line"></div>
+  </div>
+
+  <!-- MARKET UPDATE -->
+  <div class="section">
+    <p class="section-eyebrow">Market Update · July 2026</p>
+    <h2 class="section-title">What Is Happening in <em>Your Market</em></h2>
+    <div class="divider"></div>
+    <p class="body-text">Buyer desire is still high in your neighborhood. The Biloxi market in the $200,000 to $300,000 price range remains active and homes continue to sell at a strong percentage of list price. Here is what the current data shows.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">55</div>
+        <div class="stat-label">Avg Days to Sell</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value"><em>98%</em></div>
+        <div class="stat-label">Of List Price</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$251K</div>
+        <div class="stat-label">Avg Sale Price</div>
+      </div>
+    </div>
+
+    <div class="stats-grid" style="margin-top: 8px;">
+      <div class="stat-card">
+        <div class="stat-value">1,584</div>
+        <div class="stat-label">Active Listings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">578</div>
+        <div class="stat-label">Under Contract</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">501</div>
+        <div class="stat-label">Sold This Period</div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <p><strong>What this means for Petit Bois homeowners:</strong> With 578 homes currently under contract and homes selling in an average of 55 days, buyers remain active and motivated. If you have been thinking about what your home may be worth in today's market this is a good time to find out.</p>
+    </div>
+  </div>
+
+  <!-- COMMUNITY HIGHLIGHTS -->
+  <div class="section">
+    <p class="section-eyebrow">Community Highlights · July 2026</p>
+    <h2 class="section-title">What Is Happening <em>Near You</em></h2>
+    <div class="divider"></div>
+
+    <div class="highlight-item">
+      <div class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A4744" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+      <div class="highlight-text">
+        <h4>Red, White & Biloxi: An America250 Celebration</h4>
+        <p>July 4, 5 to 9:30 p.m. at Biloxi Town Green, 710 Beach Blvd. A family friendly celebration honoring the nation's heritage with music, history, entertainment, and fireworks. Patriotic music, a dramatic presentation at 7 p.m., Unfazed Show & Band at 9 p.m., vendors, food trucks, and fireworks. Free admission.<br><a href="https://biloxi.ms.us" style="color: #1D9E75; font-size: 12px;">biloxi.ms.us · Details: 228-435-6339</a></p>
+      </div>
+    </div>
+
+    <div class="highlight-item">
+      <div class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A4744" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="highlight-text">
+        <h4>Biloxi Shuckers Independence Day Fireworks Extravaganza</h4>
+        <p>July 4 at Keesler Federal Park. Gates open at 5:30 p.m. All military personnel receive discounted admission. Enjoy an exciting game followed by a post-game fireworks show that lights up the night sky.<br><a href="https://www.biloxishuckers.com" style="color: #1D9E75; font-size: 12px;">biloxishuckers.com</a></p>
+      </div>
+    </div>
+
+    <div class="highlight-item">
+      <div class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A4744" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <div class="highlight-text">
+        <h4>Boom Boom Committee Fireworks Show</h4>
+        <p>July 4 beginning at 9 p.m. Fireworks launched from a barge near Deer Island set to patriotic music broadcast on BOB 105.9. Best viewing spots range from the Biloxi Lighthouse to the Biloxi Bay Bridge. A fireworks-free zone is also available for spectators.<br><a href="https://biloxi.ms.us" style="color: #1D9E75; font-size: 12px;">biloxi.ms.us</a></p>
+      </div>
+    </div>
+
+    <div class="highlight-item">
+      <div class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A4744" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg></div>
+      <div class="highlight-text">
+        <h4>Stars, Stripes & Seafood: An America250 Celebration</h4>
+        <p>July 3, 5:30 to 7:30 p.m. at the Maritime & Seafood Industry Museum, 115 1st St. Enjoy re-enactments from the Five Founding Fathers of the Seafood Industry. Refreshments served. Free admission.<br><a href="https://www.maritimemuseum.org" style="color: #1D9E75; font-size: 12px;">maritimemuseum.org · Details: 228-435-6254</a></p>
+      </div>
+    </div>
+
+    <div class="highlight-item">
+      <div class="highlight-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A4744" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="highlight-text">
+        <h4>Donal M. Snyder Sr. Community Center</h4>
+        <p>Activities for all ages including Senior Bingo and Ice Cream Social events throughout the month. The community center on 2520 Pass Road remains one of the most visited spots near Petit Bois with a four-lane lap pool, indoor walking track, and fitness room.<br><a href="https://biloxi.ms.us" style="color: #1D9E75; font-size: 12px;">biloxi.ms.us · Details: 228-388-7170</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONAL NOTE -->
+  <div class="note-section">
+    <p class="section-eyebrow">A Note from Katina</p>
+    <div class="note-card">
+      <p>Welcome to the very first Petit Bois Neighborhood Newsletter.</p>
+      <p>I recently had the privilege of working on a sale right here in your subdivision and it reminded me of what makes this neighborhood so special. The location, the community, and the lifestyle here are things that buyers are actively seeking out right now.</p>
+      <p>My goal with this newsletter is simple. I want to keep you informed about what is happening in your local market every month — no pressure, no sales pitch. Just honest, useful information that helps you make smart decisions about your home on your own timeline.</p>
+      <p>If you ever have questions about your home's value or the local market please do not hesitate to reach out. I am always happy to help.</p>
+      <span class="note-signature">Katina Bodden</span>
+      <span class="note-title">Realtor · Keller Williams · Mississippi Gulf Coast · 228.346.6781</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p>Know someone in Petit Bois who would find this newsletter helpful? Feel free to share it with a neighbor. And if you are curious about what your home is worth today we are happy to share what the market shows.</p>
+    <a href="https://katinanicholas.github.io/petit-bois/" class="cta-btn">Visit the Neighborhood Page</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-brand">Keys. Clarity. Katina. · Unlocking Smart Moves, One Key at a Time.</span>
+    <p>
+      Katina Bodden · Real Estate Strategist · Keys. Clarity. Katina. · MS License S58840<br>
+      228.346.6781 · <a href="mailto:katinbodden@kw.com">katinbodden@kw.com</a><br><br>
+      Market data sourced from MLS United. Deemed reliable but not guaranteed. Equal Housing Opportunity.<br>
+      You are receiving this newsletter because you signed up at our Petit Bois neighborhood page.<br>
+      <a href="#">Unsubscribe</a>
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
