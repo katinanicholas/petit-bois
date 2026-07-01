@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petit Bois Postcard — Keys. Clarity. Katina.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8E4DC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 32px;
+  }
+
+  .page-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8A8578;
+    text-align: center;
+  }
+
+  /* POSTCARD: 6x4 inches at 96dpi = 576x384px */
+  .postcard {
+    width: 576px;
+    height: 384px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ── FRONT ─────────────────────────── */
+  .front {
+    background: #1A4744;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .front::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(29,158,117,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .front-top {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 40px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .front-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C4964A;
+    margin-bottom: 14px;
+  }
+
+  .front-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #FDFAF5;
+    margin-bottom: 14px;
+  }
+
+  .front-headline em {
+    font-style: italic;
+    color: #C4964A;
+  }
+
+  .front-sub {
+    font-size: 11px;
+    color: rgba(253,250,245,0.55);
+    line-height: 1.6;
+    max-width: 380px;
+  }
+
+  .front-bottom {
+    background: rgba(0,0,0,0.25);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sold-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sold-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #C4964A;
+    flex-shrink: 0;
+  }
+
+  .sold-tag p {
+    font-size: 10px;
+    color: rgba(253,250,245,0.6);
+    line-height: 1.4;
+  }
+
+  .sold-tag strong {
+    font-size: 11px;
+    color: #FDFAF5;
+    display: block;
+  }
+
+  .front-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(196,150,74,0.6);
+  }
+
+  /* ── BACK ──────────────────────────── */
+  .back {
+    background: #FDFAF5;
+    display: grid;
+    grid-template-columns: 1.1fr 1px 0.9fr;
+  }
+
+  .back-divider {
+    background: #E8E3DA;
+    margin: 20px 0;
+  }
+
+  /* Left — message */
+  .back-left {
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .back-tag {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #C4964A;
+    margin-bottom: 6px;
+  }
+
+  .back-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #1A4744;
+    margin-bottom: 10px;
+  }
+
+  .back-title em { font-style: italic; }
+
+  .back-body {
+    font-size: 9.5px;
+    color: #4A4840;
+    line-height: 1.65;
+    margin-bottom: 12px;
+    flex: 1;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .mini-stat {
+    background: #F5F0E8;
+    border-top: 2px solid #C4964A;
+    padding: 8px 10px;
+    flex: 1;
+    text-align: center;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .mini-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: #1A4744;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .mini-stat-label {
+    font-size: 7.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8A8578;
+  }
+
+  /* QR section */
+  .qr-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1A4744;
+    border-radius: 4px;
+    padding: 10px 12px;
+  }
+
+  .qr-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .qr-text p {
+    font-size: 8.5px;
+    color: rgba(253,250,245,0.55);
+    line-height: 1.5;
+  }
+
+  .qr-text strong {
+    font-size: 9px;
+    color: #C4964A;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* Right — address */
+  .back-right {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .stamp-area {
+    align-self: flex-end;
+    width: 58px;
+    height: 70px;
+    border: 1px dashed #C4C0B8;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7.5px;
+    color: #C4C0B8;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+
+  .address-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  .address-line {
+    height: 1px;
+    background: rgba(26,71,68,0.12);
+    margin-bottom: 9px;
+    width: 100%;
+  }
+
+  .back-agent {
+    border-top: 1px solid #E8E3DA;
+    padding-top: 10px;
+  }
+
+  .agent-name {
+    font-size: 10px;
+    font-weight: 500;
+    color: #1A4744;
+  }
+
+  .agent-title {
+    font-size: 8px;
+    color: #8A8578;
+    margin-top: 1px;
+  }
+
+  .agent-contact {
+    font-size: 8px;
+    color: #2D6B67;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    font-style: italic;
+    color: #C4964A;
+    margin-top: 4px;
+  }
+
+  .print-note {
+    font-size: 11px;
+    color: #8A8578;
+    text-align: center;
+    max-width: 576px;
+  }
+
+  @media print {
+    body { background: white; padding: 0; gap: 0; }
+    .page-label, .print-note { display: none; }
+    .postcard { box-shadow: none; margin: 0; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<p class="page-label">Postcard Front — 6" × 4" Print Ready</p>
+
+<!-- FRONT -->
+<div class="postcard front">
+  <div class="front-top">
+    <p class="front-eyebrow">Petit Bois Subdivision · Biloxi, MS</p>
+    <h1 class="front-headline">Buyer Desire Is Still<br><em>High in Your</em><br>Neighborhood.</h1>
+    <p class="front-sub">A home in Petit Bois recently sold and buyers continue to be active in this price range. Find out what your home is worth today.</p>
+  </div>
+  <div class="front-bottom">
+    <div class="sold-tag">
+      <div class="sold-dot"></div>
+      <p><strong>Recently Sold in Petit Bois</strong>2556 Audubon Place · Biloxi, MS 39531</p>
+    </div>
+    <div class="front-brand">Keys. Clarity. Katina.</div>
+  </div>
+</div>
+
+<p class="page-label">Postcard Back — Message & Address Side</p>
+
+<!-- BACK -->
+<div class="postcard back">
+  <div class="back-left">
+    <div>
+      <p class="back-tag">Neighborhood Market Update</p>
+      <h2 class="back-title">What Is Your Home<br><em>Worth Today?</em></h2>
+      <p class="back-body">
+        Buyer desire is still high in your neighborhood. A home in Petit Bois recently sold and buyers are active in this price range. If you have been curious about what your home is worth today we are happy to share what the market shows.
+      </p>
+    </div>
+
+    <div class="stat-row">
+      <div class="mini-stat">
+        <div class="mini-stat-value">55</div>
+        <div class="mini-stat-label">Avg Days to Sell</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-value">98%</div>
+        <div class="mini-stat-label">Of List Price</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-value">$251K</div>
+        <div class="mini-stat-label">Avg Sale Price</div>
+      </div>
+    </div>
+
+    <div class="qr-section">
+      <div class="qr-placeholder"><img src="https://katinanicholas.github.io/petit-bois/qr-code-postcard.png" style="width:60px;height:60px;display:block;" alt="QR Code"></div>
+      <div class="qr-text">
+        <strong>Scan or Visit the Link Below</strong>
+        <p>Stay informed on what is happening in your neighborhood. Sign up for your free monthly Petit Bois market update.</p>
+        <p style="color: #C4964A; margin-top: 4px; font-size: 8px;">katinanicholas.github.io/petit-bois/</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-divider"></div>
+
+  <div class="back-right">
+    <div class="stamp-area">Place<br>Stamp<br>Here</div>
+    <div class="address-lines">
+      <div class="address-line"></div>
+      <div class="address-line"></div>
+      <div class="address-line"></div>
+    </div>
+    <div class="back-agent">
+      <div class="agent-name">Katina Bodden</div>
+      <div class="agent-title">Realtor · Keller Williams</div>
+      <div class="agent-contact">
+        228.346.6781<br>
+        katinbodden@kw.com
+      </div>
+      <div class="brand-mark">Keys. Clarity. Katina.</div>
+    </div>
+  </div>
+</div>
+
+<p class="print-note">Replace "QR Code Here" with a QR code linking to your Petit Bois landing page before printing. Standard postcard size 6" × 4". Print double-sided on 100lb cardstock.</p>
+
+</body>
+</html>
